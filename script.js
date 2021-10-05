@@ -14,7 +14,7 @@ let rockPaperScissors = function(playerSelection, computerSelection){
     // values get compared
     if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors" ) {
         
-       if (playerSelection == "rock" & computerSelection == "rock") {
+       if (playerSelection == computerSelection) {
            return "It's a tie!"
        }
        else if (playerSelection == "rock" && computerSelection == "paper") {
@@ -25,10 +25,7 @@ let rockPaperScissors = function(playerSelection, computerSelection){
        }
        else if (playerSelection == "paper" && computerSelection == "rock") {
            return "You Win! Paper beats Rock"
-       }
-       else if (playerSelection == "paper" && computerSelection == "paper") {
-           return "It's a tie!"        
-       }
+       }       
        else if (playerSelection == "paper" && computerSelection == "scissors") {
            return "You Lose! Scissors beats Paper" 
        }
@@ -37,27 +34,24 @@ let rockPaperScissors = function(playerSelection, computerSelection){
        }
        else if (playerSelection == "scissors" && computerSelection == "paper") {
            return "You Win! Scissors beats Paper"
-       }
-       else if (playerSelection == "scissors" && computerSelection == "scissors") {
-           return "It's a tie!"
-       }
+       }       
     }
-    // This part here doesn't work. After the alert, and the prompt, the method returns undefined.
     else {
         alert("Please pick a valid answer (Rock, Paper or Scissors)");
-        rockPaperScissors(playerSelection, computerSelection);
+        return rockPaperScissors(playerSelection, computerSelection);
     }
 }
 let game = function() {
     let playerScore = 0;
     let computerScore = 0;
+        
     for (let i = 1; i < 6; i++) {
-        rockPaperScissors();
-        if (rockPaperScissors().includes("You Win!")){
+        let result = rockPaperScissors();
+        if (result.includes("You Win!")){
             playerScore++;
             console.log(`You Win! Round ${i} score: User score: ${playerScore} - Computer Score ${computerScore}`)
         }
-        else if (rockPaperScissors().includes("You Lose!")) {
+        else if (result.includes("You Lose!")) {
             computerScore++;
             console.log(`You Lose! Round ${i} score: User score: ${playerScore} - Computer Score ${computerScore}`)
         }
