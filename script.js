@@ -131,6 +131,15 @@ let rockPaperScissors = function(playerSelection, computerSelection){
             selection.insertBefore(results, playButton)
             round++;
         }
+
+        if (playerScore == 5){
+            results.textContent = `Congratulations, you win! Final score: You: ${playerScore} - Computer: ${computerScore}. Refresh the page to play again.`
+            playButton.remove()
+        }
+        else if (computerScore == 5) {
+            results.textContent = `Computer wins, better luck next time! Final score: You: ${playerScore} - Computer: ${computerScore}. Refresh the page to play again.`
+            playButton.remove()
+        }
     }
 
        
